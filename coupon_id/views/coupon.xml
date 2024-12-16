@@ -1,0 +1,19 @@
+<odoo>
+    <data>
+        <!-- Kế thừa view 'sale.coupon.generate.form' -->
+        <record id="sale_coupon_generate_form_inherit" model="ir.ui.view">
+            <field name="name">sale.coupon.generate.form.inherit</field>
+            <field name="model">sale.coupon.generate</field>
+            <field name="inherit_id" ref="sale_coupon.sale_coupon_generate_view_form"/>
+            <field name="arch" type="xml">
+                <!-- Chèn trường header_code vào sau thẻ <group> -->
+                <xpath expr="//field[@name='generation_type']" position="after">
+                    <field name="header_code"/>
+                    <field name="length"/>
+                    <field name="position"/>
+                </xpath>
+                
+            </field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,17 @@
+Thêm Field 'header_code', 'length' , 'position' vào module 'sale.coupon.generate', sau đó thực hiện kế thừa view 'sale_coupon.sale_coupon_generate_view_form', chèn field mới vào.
+header_code : kí tự custom, ví dụ như 'NST'
+length: độ dài code 
+position: vị trí cần chèn
+tổng độ dài counpon là : 7+ độ dài header_code.
+
+Ví dụ:
+
+header_code : NST
+length: 7 
+position: 2
+
+code random 7 kí tự là 1234567
+vị trí là 2 thì nó sẽ chèn vào vị trí thứ 2
+vậy ta có code custom: 1NST234567
+tổng độ dài counpon là : 7+ 3 = 10.
+lưu ý độ dài code chỉ được tối đa là 16.
