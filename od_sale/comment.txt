@@ -1,0 +1,14 @@
+Mô tả:
+- Thêm ribbon cho bill
+- Tạo thêm field 'status' để thay đổi trạng thái bill
+- Thêm 'field' trong search
+- Thêm filter 'sale > 1000' vào Quotations
+- Thêm group by 'state' vào Quotations
+Nội dung:
+- kế thừa module sale.order, sau đó thêm field 'status' dạng Selection
+- kế thừa view 'sale.view_order_form' sau đó chèn vào header các button có name là 'set_paid' và 'set_un_pay' và field 'status'
+- quay lại file kế thừa module. thêm các hàm 'set_paid' và 'set_un_pay' để định nghĩa các action của button để thay đổi value 'status'
+- quay lại view, xét 'xpath' để chèn ribbon vào bill. sau đó thêm ribbon tương ứng cho từng status. (hàm 'invisible' là ẩn đi value)
+- kế thừa view 'sale.sale_order_view_search_inherit_quotation'.
+- thêm các field muốn search vào 'inside' như 'partner_id','amount_total'. add filter 'sale > 1000'  vào trong view này luôn vì filter chung module với search.
+- kế thừa module 'sale.view_sales_order_filter',sau đó add trong thẻ 'xpath', thêm thẻ 'group' chứa 'filter' mà mình muốn gộp. ở đây là field 'state'	
