@@ -1,0 +1,22 @@
+<odoo>
+    <!-- Define the server action -->
+    <record id="action_fetch_api_data" model="ir.actions.server">
+        <field name="name">Fetch API Data</field>
+        <field name="model_id" ref="base.model_res_partner"/>
+        <field name="state">code</field>
+        <field name="code">model.fetch_api_data()</field>
+    </record>
+
+    <!-- Inherit the res.partner tree view -->
+    <record id="view_partner_tree_inherit_api" model="ir.ui.view">
+        <field name="name">res.partner.tree.api</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_tree"/>
+        <field name="arch" type="xml">
+            <!-- Add the button in the header -->
+            <xpath expr="//tree" position="inside">
+                    <button name="action_fetch_api_data" type="object" string="Fetch API Data" class="btn-primary"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
