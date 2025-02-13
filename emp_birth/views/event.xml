@@ -1,0 +1,28 @@
+<odoo>
+    <data noupdate="1">
+        <!-- Cron Job for Sending Event Emails -->
+        <record id="sale_coupon_generate_form_inherit" model="ir.ui.view">
+            <field name="name">hr.view_employee_form.inherit</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="arch" type="xml">
+                <!-- Chèn trường header_code vào sau thẻ <group> -->
+                <xpath expr="//field[@name='birthday']" position="after">
+                    <field name="age"/>
+                </xpath>
+                
+            </field>
+        </record>
+
+        <!-- Cron Job for Sending Birthday Emails -->
+        <record id="employee_birthday_email_sender" model="ir.cron">
+            <field name="name">Send Employee Birthday Emails</field>
+            <field name="model_id" ref="hr.model_hr_employee"/>
+            <field name="state">code</field>
+            <field name="code">model._send_birthday_emails()</field>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="numbercall">-1</field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,190 @@
+<odoo>
+	<data>
+		<!-- Action to open the Bill Customer tree view -->
+		<record id="action_bill_customer" model="ir.actions.act_window">
+			<field name="name">Bill Customer</field>
+			<field name="res_model">bill.customer</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+
+        <record id="view_bill_customer_form" model="ir.ui.view">
+    <field name="name">bill.customer.form</field>
+    <field name="model">bill.customer</field>
+    <field name="arch" type="xml">
+        <form>
+            <sheet>
+                <!-- Other fields -->
+                <h2>Bill Lines</h2>
+                <field name="line_ids">
+                    <tree editable="bottom">
+                        <field name="product_id"/>
+                        <field name="quantity"/>
+                        <field name="price_unit"/>
+                        <field name="subtotal" readonly="1"/>
+                    </tree>
+                </field>
+            </sheet>
+        </form>
+    </field>
+</record>
+
+<record id="view_bill_line_model_tree" model="ir.ui.view">
+    <field name="name">bill.line.model.tree</field>
+    <field name="model">bill.line.model</field>
+    <field name="arch" type="xml">
+        <tree>
+            <field name="product_id"/>
+            <field name="quantity"/>
+            <field name="price_unit"/>
+            <field name="subtotal"/>
+        </tree>
+    </field>
+</record>
+		<!-- Menu item for Bill Customer -->
+		<menuitem id="menu_bill_customer_root" name="Bill Management" sequence="10"/>
+		<menuitem id="menu_bill_customer" name="Bills" parent="menu_bill_customer_root" action="action_bill_customer" sequence="20"/>
+		<!-- Tree view for Bill Customer -->
+		<record id="view_tree_bill_customer" model="ir.ui.view">
+			<field name="name">bill.customer.tree</field>
+			<field name="model">bill.customer</field>
+			<field name="arch" type="xml">
+				<tree class="table-striped">
+					<field name="name"/>
+					<field name="email"/>
+					<field name='phone'/>
+					<field name="supplier_id"/>
+					<field name="date_buy"/>
+					<field name="amount_total"/>
+					<field name="currency_id"/>
+				</tree>
+			</field>
+		</record>
+		<!-- Form view for Bill Customer -->
+		<record id="view_form_bill_customer" model="ir.ui.view">
+			<field name="name">bill.customer.form</field>
+			<field name="model">bill.customer</field>
+			<field name="arch" type="xml">
+				<form class="o_form_bootstrap  justify-content-center">
+					<sheet class="container form-row">
+						<div class="container">
+							<div class="row">
+								<div class="col-sm">
+									<img src="/bill/static/description/logo.png" alt="Logo" style="width: 250px; margin-top: -30px;" />
+								</div>
+								<div class="col-sm font-weight-bold" style="font-family: Roboto; font-size: 40px; color: DeepSkyBlue;">
+                                    Customer Details
+                                </div>
+								<div class="col-sm d-flex justify-content-center align-items-center"></div>
+							</div>
+						</div>
+						<div class="container">
+							<div class="row  justify-content-center">
+								<div class="col-md-6 justify-content-center">
+									<string  style="font-family: Roboto;font-size: 18px; ">Customer name</string>
+									<field name="name" class="form-label mb-2" />
+								</div>
+								<div class="form-group col-md-6">
+									<string  style="font-family: Roboto;font-size: 18px; ">Email</string>
+									<field name="email" class="form-label mb-2" />
+								</div>
+							</div>
+						</div>
+						<div class="container">
+							<div class="row  ">
+								<div class="form-group col-md-6">
+									<string  style="font-family: Roboto;font-size: 18px; ">Phone</string>
+									<field name="phone" class="form-label mb-2" />
+								</div>
+								<div class="col-md-2">
+									<string  style="font-family: Roboto;font-size: 18px; ">Age</string>
+									<field name="age" class="form-label mb-2"  />
+								</div>
+								<div class="form-group col-md-4">
+									<string  style="font-family: Roboto;font-size: 18px; display: block; ">Date of Birth</string>
+									<field name="date_of_birth" class="form-label mb-2"/>
+								</div>
+							</div>
+						</div>
+						<div class="container">
+							<div class="row  ">
+								<div class="form-group col-md-3">
+									<string  style="font-family: Roboto; font-size: 18px; display: block; ">Supplier</string>
+									<field name="supplier_id" class="form-label mb-2"/>
+								</div>
+								<div class="form-group col-md-2">
+									<string  style="font-family: Roboto; font-size: 18px; display: block; ">Currency</string>
+									<field name="currency_id" class="form-label mb-2"/>
+								</div>
+								<div class="form-group col-md-2">
+									<string  style="font-family: Roboto; font-size: 18px; display: block; ">Total amount</string>
+									<field name="amount_total" class="form-label mb-2" style=" background-color: white;" />
+								</div>
+								<div class="form-group col-md-5">
+									<string  style="font-family: Roboto;font-size: 18px; display: block;">Time buy</string>
+									<field name="date_buy" class="form-control" readonly="1"/>
+								</div>
+							</div>
+						</div>
+
+                        
+						<div class="container">
+							<h1 style="font-family: Roboto; font-size: 22px; display: block; "> Address </h1>
+							<div class="row  ">
+								<div class="form-group col-md-5">
+									<string  style="font-family: Roboto; font-size: 18px; display: block; ">Street</string>
+									<field name="street" class="form-label mb-2"/>
+								</div>
+								<div class="form-group col-md-4">
+									<string  style="font-family: Roboto;font-size: 18px; display: block;">City</string>
+									<field name="city" class="form-label mb-2" />
+								</div>
+								<div class="form-group col-md-3">
+									<string  style="font-family: Roboto;font-size: 18px; display: block;">Zip</string>
+									<field name="zip" class="form-label mb-2"/>
+								</div>
+							</div>
+							<div class="row  ">
+								<div class="form-group col-md-3">
+									<string  style="font-family: Roboto; font-size: 18px; display: block; ">State</string>
+									<field name="state_id" class="form-label mb-2"/>
+								</div>
+								<div class="form-group col-md-3">
+									<string  style="font-family: Roboto; font-size: 18px; display: block; ">Country</string>
+									<field name="country_id" class="form-label mb-2"/>
+								</div>
+							</div>
+						</div>
+						<notebook>
+							<page string="Bill Lines">
+								<field name="line_ids">
+									<tree class="table table-hover">
+										<field name="product_id"/>
+										<field name="description"/>
+										<field name="quantity"/>
+										<field name="price_unit"/>
+										<field name="subtotal"/>
+									</tree>
+								</field>
+							</page>
+						</notebook>
+					</sheet>
+				</form>
+			</field>
+		</record>
+		<!-- Tree view for Bill Line -->
+		<record id="view_tree_bill_line" model="ir.ui.view">
+			<field name="name">bill.line.tree</field>
+			<field name="model">bill.line.model</field>
+			<field name="arch" type="xml">
+				<tree class="table table-striped">
+					<field name="bill_id"/>
+					<field name="product_id"/>
+					<field name="description"/>
+					<field name="quantity"/>
+					<field name="price_unit"/>
+					<field name="subtotal"/>
+				</tree>
+			</field>
+		</record>
+	</data>
+</odoo>

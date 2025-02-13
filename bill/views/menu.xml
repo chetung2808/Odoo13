@@ -1,0 +1,36 @@
+<odoo>
+   <record id="parent_menu_id" model="ir.ui.menu">
+    <field name="name">Parent Menu</field>
+    <field name="sequence">1</field>
+    <field name="groups_id" eval="[(6, 0, [ref('base.group_user')])]"/>
+</record>
+
+<record id="child_menu_1_id" model="ir.ui.menu">
+    <field name="name">Child Menu 1</field>
+    <field name="parent_id" ref="parent_menu_id"/>
+    <field name="action" ref="action_1_id"/>
+    <field name="sequence">1</field>
+</record>
+
+<record id="child_menu_2_id" model="ir.ui.menu">
+    <field name="name">Child Menu 2</field>
+    <field name="parent_id" ref="parent_menu_id"/>
+    <field name="action" ref="action_2_id"/>
+    <field name="sequence">2</field>
+</record>
+
+
+<record id="action_1_id" model="ir.actions.act_window">
+    <field name="name">Action 1</field>
+    <field name="res_model">sale.order</field>
+    <field name="view_mode">tree,form,calendar,graph,kanban,pivot</field>
+</record>
+
+<record id="action_2_id" model="ir.actions.act_window">
+    <field name="name">Action 2</field>
+    <field name="res_model">sale.order</field>
+    <field name="view_mode">tree,form,calendar,graph,kanban,pivot</field>
+    <field name="view_mode">tree,form</field>
+</record>
+
+</odoo>

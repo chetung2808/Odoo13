@@ -1,0 +1,14 @@
+<record id="od_sale_view_search" model="ir.ui.view">
+      <field name="name">Order</field>
+      <field name="model">sale.order</field>
+      <field name="inherit_id" ref="sale.sale_order_view_search_inherit_quotation"></field>
+
+      <field name="arch" type="xml">
+        <search string="SaleOrder">
+          <!-- Add your fields here -->
+            <field name="partner_id" string="Đối tác"/> 
+            <field name="amount_total" string="money"/> 
+         
+        </search>
+      </field>
+    </record>  

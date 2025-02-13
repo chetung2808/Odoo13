@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Cập nhật form view của sale.order -->
+    <record id="view_order_form_inherit" model="ir.ui.view">
+        <field name="name">sale.coupon.program.inherit</field>
+        <field name="model">sale.coupon.program</field>
+        <field name="inherit_id" ref="sale_coupon.sale_coupon_program_view_form"/> <!-- Kế thừa từ form gốc -->
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='order_count']/.." position="before">
+                <button class="oe_stat_button" type="action" icon="fa-ticket" name="472">
+                    <field name="count_coupon" string="Voucher" widget="statinfo"/>
+                </button>
+            </xpath>
+            <!-- Thêm trường end_sale và validity_duration vào form -->
+            <xpath expr="//field[@name='name']" position="after">
+                <group>
+                    <field name="end_sale"/>
+                    <field name="validity_duration" readonly="1"/> <!-- Trường validity_duration chỉ đọc -->
+                </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>

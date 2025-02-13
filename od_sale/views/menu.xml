@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Action definitions -->
+        <record id="action_1_id" model="ir.actions.act_window">
+            <field name="name">Action 1</field>
+            <field name="res_model">sale.order</field>
+            <field name="view_mode">tree,form,calendar,graph,kanban,pivot</field>
+        </record>
+        <record id="action_2_id" model="ir.actions.act_window">
+        <field name="name">Action 2</field>
+        <field name="res_model">sale.order</field>
+        <field name="view_mode">tree,form,calendar,graph,kanban,pivot</field>
+        </record>
+        <!-- Menu item definitions -->
+        <menuitem id="parent_menu_id" name="Parent Menu" parent="sale_menu_root" sequence="1">
+            <attribute name="groups">base.group_user</attribute>
+        </menuitem>
+
+        <menuitem id="child_menu_1_id" name="Child Menu 1" parent="parent_menu_id" action="action_1_id" sequence="1"/>
+        <menuitem id="child_menu_2_id" name="Child Menu 2" parent="parent_menu_id" action="action_2_id" sequence="2"/>
+
+    </data>
+</odoo>

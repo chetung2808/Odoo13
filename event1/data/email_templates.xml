@@ -1,0 +1,33 @@
+<odoo>
+    <data>
+        <!-- Email Template for General Events -->
+        <record id="email_template_event" model="mail.template">
+            <field name="name">Event Email Template</field>
+            <field name="model_id" ref="base.model_res_partner"/>
+            <field name="subject">Happy ${object.event_name}!</field>
+            <field name="email_from">${(user.email or '').strip()}</field>
+            <field name="email_to">${object.email|safe}</field>
+            <field name="body_html" type="html">
+                <![CDATA[
+                    <p>Dear ${object.name},</p>
+                    <p>We wish you a wonderful ${object.event_name}!</p>
+                ]]>
+            </field>
+        </record>
+
+        <!-- Email Template for Employee Birthdays -->
+        <record id="email_template_birthday" model="mail.template">
+            <field name="name">Birthday Email Template</field>
+            <field name="model_id" ref="hr.model_hr_employee"/>
+            <field name="subject">Happy Birthday, ${object.name}!</field>
+            <field name="email_from">${(user.email or '').strip()}</field>
+            <field name="email_to">${object.work_email|safe}</field>
+            <field name="body_html" type="html">
+                <![CDATA[
+                    <p>Dear ${object.name},</p>
+                    <p>Happy Birthday! We wish you all the best on your special day.</p>
+                ]]>
+            </field>
+        </record>
+    </data>
+</odoo>

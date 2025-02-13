@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding="utf-8"?>
+
+<odoo>
+  <data>
+      
+            
+      <!-- model.name inherit tree view -->
+      <record id="seq_orders" model="ir.sequense">
+        <field name="name">sequense</field>
+        <field name="code">sale_seq</field>
+        <field name="prefic" >O</field>
+        <field name='padding'>5</field>
+        <field name="company_id" evalue='False'  > </field>
+            <!-- Add your xpath here -->
+            
+       
+     </record>
+  </data>
+</odoo>
